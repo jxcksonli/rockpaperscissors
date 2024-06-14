@@ -4,33 +4,25 @@
   <meta charset="UTF-8">
   <title>Rock Paper Scissors</title>
 </head>
-<style>
-  * {
-    background: url("images/bg.jpg");
-    background-size: cover;
-    text-align: center;
-  }
-
-  button {
-  width:150px;
-  height:100px;
-  background: wheat;
-  opacity: .7;
-  }
-
-</style>
 <body>
+    <link rel="stylesheet" href="css/styles.css">
+    <h1> Welcome to Rock Paper Scissors! </h1>
 
-    <h1 style="font-family: Helvetica"> Welcome to Rock Paper Scissors! </h1>
+    <div class="results">
+      <div class="human">
+        <span class="emoji">👶</p>
+        <p class="humanScore">0</p>
+      </div>
+      <div class="computer">
+        <span class="emoji">🖥️</p>
+        <p class="computerScore">0</p>
+      </div>
+    </div>
 
     <button id="Rock">Rock</button>
     <button id="Paper">Paper</button>
     <button id="Scissors">Scissors</button>
 
-    <div class="results">
-
-
-    </div>
     
     <script src="game.js"></script>
 </body>

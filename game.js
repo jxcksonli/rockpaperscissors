@@ -23,43 +23,49 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
-function playGame(rounds){
-    let humanScore = 0;
-    let computerScore = 0;
-
-
-    if (humanScore == computerScore){
-        return "We have a draw! Both players won " + humanScore + " times";
-    } else if (humanScore > computerScore){
-        return "The human won! With a score of " + humanScore;
-    } else {
-        return "The computer won! With a score of " + computerScore;
-    }
-}
-
 // buttons is a node list. It looks and acts much like an array.
 const buttons = document.querySelectorAll("button");
 
-const humanScoreT = 0;
-const computerScoreT = 0;
+const humanScore = document.querySelector(".humanScore");
+const computerScore = document.querySelector(".computerScore");
 
-// we use the .forEach method to iterate through each button
+// For each button
 buttons.forEach((button) => {
-  // and for each one we add a 'click' listener
+  // Add a click listener
   button.addEventListener("click", () => {
 
     const res = playRound(button.id.toLowerCase(), getComputerChoice())
 
     if (res == "human"){
-        alert("Human won selecting " + button.id);
-        humanScore++;
+        alertWon(button.id)
+        humanScore.setAttribute(humanScore.getAttribute()+1)
+        humanScore.setAttribute(humanScore.getAttribute()+1)
     } else if (res == "computer"){
-        alert("Human lost selecting " + button.id);
-        computerScore++;
+        alertLose(button.id)
+        computerScore.setAttribute(computerScore.getAttribute()+1)
     } else {
-        alert("This round was a draw!")
+        alertDraw();
     }
   });
 });
 
+function alertWon(res){
+    alert("Human won the round selecting " + res);
+}
 
+function alertLose(res){
+    alert("Human loss the round selecting " + res);
+}
+
+function alertDraw(){
+    alert("This round was a draw!")
+}
+
+function alertHuman(){
+    alert("The human won the game as it won 5 rounds first!");
+}
+
+
+function alertComputer(){
+    alert("The computer won the game as it won 5 rounds first!");
+}
