@@ -31,23 +31,40 @@ const computerScore = document.querySelector(".computerScore");
 
 // For each button
 buttons.forEach((button) => {
+
   // Add a click listener
   button.addEventListener("click", () => {
-
-    const res = playRound(button.id.toLowerCase(), getComputerChoice())
+    const res = playRound(button.id.toLowerCase(), getComputerChoice());
+    let humanScoreValue = parseInt(humanScore.textContent);
+    let computerScoreValue = parseInt(computerScore.textContent);
 
     if (res == "human"){
-        alertWon(button.id)
-        humanScore.setAttribute(humanScore.getAttribute()+1)
-        humanScore.setAttribute(humanScore.getAttribute()+1)
+        humanScoreValue += 1;
+        humanScore.textContent = humanScoreValue;
+        alertWon(button.id);
+
     } else if (res == "computer"){
-        alertLose(button.id)
-        computerScore.setAttribute(computerScore.getAttribute()+1)
+        computerScoreValue += 1;
+        computerScore.textContent = computerScoreValue;
+        alertLose(button.id);
     } else {
         alertDraw();
     }
-  });
+
+    if (humanScoreValue == 5){
+        resetValues();
+        alertHuman();
+      } else if (computerScoreValue== 5){
+        resetValues();
+        alertComputer();
+      }
+})
 });
+
+function resetValues(){
+    computerScore.textContent = 0;
+    humanScore.textContent = 0;
+}
 
 function alertWon(res){
     alert("Human won the round selecting " + res);
@@ -64,7 +81,6 @@ function alertDraw(){
 function alertHuman(){
     alert("The human won the game as it won 5 rounds first!");
 }
-
 
 function alertComputer(){
     alert("The computer won the game as it won 5 rounds first!");

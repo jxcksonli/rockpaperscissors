@@ -10,6 +10,7 @@ button {
   height:100px;
   background: wheat;
   opacity: .7;
+  border-radius: 10%;;
   }
 
 .results {
@@ -21,7 +22,6 @@ button {
 .human {
     display: flex;
     flex-direction: column;
-    align-self: center;
   }
 
 .computer {
